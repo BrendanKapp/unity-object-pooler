@@ -69,7 +69,12 @@ public class PoolManager : MonoBehaviour {
         //pools an object of id [id]
         Pool pool = (Pool)pools[id];
         GameObject returnObject = pool.PoolObject();
-        if  (returnObject != null) returnObject.SetActive(true);
+        if (returnObject != null) returnObject.SetActive(true);
+        //on pool
+        if (returnObject.GetComponent<IPoolable>() != null)
+        {
+            returnObject.GetComponent<IPoolable>().OnPool();
+        }
         return returnObject;
     }
     /*

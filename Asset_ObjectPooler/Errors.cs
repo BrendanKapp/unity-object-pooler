@@ -20,7 +20,7 @@ public static class Errors {
         codeMap.Add("OutOfObjects", 1);
 
         errors.Add("Pool does not contain definition for id: ");
-        codeMapAdd("PoolNullDefinition", 2);
+        codeMap.Add("PoolNullDefinition", 2);
 
         errors.Add("Pool not on object with manager!");
         codeMap.Add("PoolNotOnManager", 3);

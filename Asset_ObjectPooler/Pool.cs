@@ -162,6 +162,11 @@ public class Pool : MonoBehaviour {
                     }
                 }
             }
+            //since this object is being depooled and repooled, we must call depool is needed
+            if (newObject.GetComponent<IPoolable>() != null)
+            {
+                newObject.GetComponent<IPoolable>().OnDePool();
+            }
             inUseObjects.Enqueue(newObject);
             return newObject;
         }
@@ -187,8 +192,7 @@ public class Pool : MonoBehaviour {
             GameObject newObject = inUseObjects.Dequeue();
             if (newObject == item)
             {
-                readyObjects.Enqueue(newObject); 
-                newObject.SetActive(false);
+                OnDepool(newObject);
             }
             newQueue.Enqueue(newObject);
         }
@@ -204,8 +208,21 @@ public class Pool : MonoBehaviour {
         while (inUseObjects.Count > 0) 
         {
             GameObject newObject = inUseObjects.Dequeue();
-            readyObjects.Enqueue(newObject);
-            newObject.SetActive(false);
+            OnDepool(newObject);
+        }
+    }
+    /*
+     * OnDepool
+     * desc: a helper method for depooling an object
+     */
+    private void OnDepool(GameObject newObject)
+    {
+        readyObjects.Enqueue(newObject);
+        newObject.SetActive(false);
+        //on depool
+        if (newObject.GetComponent<IPoolable>() != null)
+        {
+            newObject.GetComponent<IPoolable>().OnDePool();
         }
     }
 }
