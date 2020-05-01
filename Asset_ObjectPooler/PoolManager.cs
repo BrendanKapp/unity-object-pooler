@@ -63,7 +63,7 @@ public class PoolManager : MonoBehaviour {
         //checks if the object id exists
         if (!pools.ContainsKey(id))
         {
-            Debug.LogError("Error (Code 2): Pool does not contain definitiion for id: '" + id + "'!");
+            Errors.LogError("PoolNullDefinition", id);
             return null;
         }
         //pools an object of id [id]
@@ -82,7 +82,7 @@ public class PoolManager : MonoBehaviour {
         //checks if the object id exists
         if (!pools.ContainsKey(id))
         {
-            Debug.LogError("Error (Code 2): Pool does not contain definitiion for id: '" + id + "'!");
+            Errors.LogError("PoolNullDefinition", id);
             return;
         }
         //depools an object of id [id]

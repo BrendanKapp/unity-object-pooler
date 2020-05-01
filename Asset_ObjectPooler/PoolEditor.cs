@@ -41,7 +41,7 @@ public class PoolEditor : Editor
             pool.PoolManager = pool.GetComponent<PoolManager>();
             if (pool.PoolManager == null)
             {
-                Debug.LogError("Error (Code 3): Pool not on object with manager!");
+                Errors.LogError("PoolNotOnManager");
             }
         }
         EditorGUILayout.PropertyField(id, new GUIContent("Id")); //add a property field for [id]

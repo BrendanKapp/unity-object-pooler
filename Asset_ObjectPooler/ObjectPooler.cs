@@ -49,7 +49,7 @@ public class ObjectPooler : MonoBehaviour
         //checks if the object id exists
         if (!poolManagers.ContainsKey(poolID))
         {
-            MissingDefinitionError();
+            Errors.LogError("MissingDefinition", poolID);
             return null;
         }
         //pools an object of id [id]
@@ -67,7 +67,7 @@ public class ObjectPooler : MonoBehaviour
     {
         if (!poolManagers.ContainsKey(poolID))
         {
-            MissingDefinitionError();
+            Errors.LogError("MissingDefinition", poolID);
             return;
         }
         PoolManager poolManager = (PoolManager)poolManagers[poolID];
@@ -98,14 +98,10 @@ public class ObjectPooler : MonoBehaviour
         //depools the poolManager poolID
         if (!poolManagers.ContainsKey(poolID))
         {
-            MissingDefinitionError();
+            Errors.LogError("MissingDefinition", poolID);
             return;
         }
         PoolManager poolManager = (PoolManager)poolManagers[poolID];
         poolManager.DePoolAll();
-    }
-    private static void MissingDefinitionError()
-    {
-        Debug.LogError("Error (Code 6): Object pooler does not contain definitiion for pool id: '" + poolID + "'!");
     }
 }

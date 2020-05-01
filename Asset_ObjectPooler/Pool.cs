@@ -146,7 +146,7 @@ public class Pool : MonoBehaviour {
                 if (rend == null) rend = newObject.GetComponent<Renderer>();
                 if (rend == null)
                 {
-                    Debug.LogError("Error (Code 5): Cannot check visibility on " + newObject.name + " as it has no renderer attached!");
+                    Errors.LogError("NoRenderer", newObject.name);
                     return null;
                 }
                 if (rend.isVisible)
@@ -158,14 +158,14 @@ public class Pool : MonoBehaviour {
                         return PoolObject();
                     } catch (IOException ioe)
                     {
-                        Debug.LogError("Error (Code 6): " + ioe.Message);
+                        Errors.LogError("IOError", ioe.Message);
                     }
                 }
             }
             inUseObjects.Enqueue(newObject);
             return newObject;
         }
-        Debug.LogError("Error (Code 1): Pool out of objects! Consider enabling recycleObjects or increasing maxObjects");
+        Errors.LogError("OutOfObjects");
         return null;
     }
     /*
