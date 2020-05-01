@@ -1,0 +1,13 @@
+List of errors and what they mean:
+
+Code 1: "Pool out of objects! Consider enabling recycleObjects or increasing maxObjects"
+-this means that the Pool you were trying to access ran out of available objects, enabling recylingObjects will be more economically but will mean that objects which are still active will be reused
+-increasing maxObjects will enable more objects to be added to the pool
+Code 2: "Pool does not contain definitiion for id: '" + id + "'!"
+-this means that the Pool you are trying to access doesn't exist, ie. you haven't defined a pool of id [id]
+Code 3: "Pool not on object with manager!"
+-all Pool scripts must be attached to an object with a PoolManager script, this error indicates that this isn't being complied with
+Code 4: "Two instances of PoolManager active! Only 1 is allowed!"
+-this pooling system uses Singletons for the PoolManager, which means that only 1 PoolManager is allowed to exist at once,
+-at start one will be removed and won't be able to be accessed via script, it is highly recommended you simply remove the one
+-you dont want yourself before this happens
