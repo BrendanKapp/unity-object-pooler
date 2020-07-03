@@ -4,4 +4,4 @@ This project was simply designed to make object pooling in my personal projects 
 
 Feel free to clone the repo and use it in your projects.
 
-I'll write an actual guide to it eventually, however the code inside is well documented and should be fairly easy to figure out.
+I'll write an actual guide to it eventually, however the code is well documented and should be fairly easy to figure out.
